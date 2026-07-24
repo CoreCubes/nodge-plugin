@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nodge": {
+      "type": "http",
+      "url": "https://platform.${NODGE_DOMAIN:-nodge.ai}/api/mcp"
+    }
+  }
+}

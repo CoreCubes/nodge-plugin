@@ -1,0 +1,15 @@
+{
+  "_comment": "Codex hooks for Nodge commit-context capture. Installed automatically with the Codex plugin (referenced from .codex-plugin/plugin.json — CLAUDE_PLUGIN_ROOT is set by Codex for compatibility). Manual alternative without the plugin: copy this into ~/.codex/hooks.json and replace the variable with the absolute path to the unzipped folder. Codex only exposes a hard Stop hook for this purpose (its planner tool is not hook-interceptable), so Codex records end-of-turn summaries; plan/progress capture is Claude-Code-only. Run the nodge-connect skill (or node scripts/connect.mjs) once so the script has credentials.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stage-context.mjs\" codex-stop"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "nodge",
+  "owner": { "name": "TechVenture", "url": "https://nodge.ai" },
+  "plugins": [
+    {
+      "name": "nodge",
+      "source": "./",
+      "description": "Connects this session to your Nodge platform: project, pipeline, deploy, logs and monitoring tools over MCP, plus commit-context capture — plans, decisions and progress are recorded per commit so any agent can recover the why behind a change from git history. Includes /nodge-connect (sign in + git auth), /nodge-clone (clone a project by slug), /nodge-doctor (diagnose the connection) and /nodge-about (what's in the box).",
+      "category": "productivity"
+    }
+  ]
+}

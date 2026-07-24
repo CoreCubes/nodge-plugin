@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "TodoWrite",
+        "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stage-context.mjs\" todo" }]
+      },
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stage-context.mjs\" question" }]
+      },
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stage-context.mjs\" plan" }]
+      }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/stage-context.mjs\" stop" }] }
+    ]
+  }
+}

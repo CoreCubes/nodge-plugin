@@ -1,0 +1,13 @@
+{
+  "_comment": "Mirror of .claude-plugin/marketplace.json for `codex plugin marketplace add`. The Codex marketplace schema is unverified against OpenAI docs — the zip/folder install flow is the proven Codex path; revisit when the Codex directory opens for self-serve submission.",
+  "name": "nodge",
+  "owner": { "name": "TechVenture", "url": "https://nodge.ai" },
+  "plugins": [
+    {
+      "name": "nodge",
+      "source": "./",
+      "description": "Connects this session to your Nodge platform: project, pipeline, deploy, logs and monitoring tools over MCP, plus commit-context capture — end-of-turn summaries are recorded per commit so any agent can recover the why behind a change from git history. Includes nodge-connect (sign in + git auth), nodge-clone, nodge-doctor and nodge-about skills.",
+      "category": "productivity"
+    }
+  ]
+}
