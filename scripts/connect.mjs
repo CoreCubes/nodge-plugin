@@ -39,6 +39,7 @@ async function installCli(domain) {
   const isWin = process.platform === 'win32';
   const installerUrl = `https://platform.${domain}/cli/${isWin ? 'install.ps1' : 'install'}`;
   console.log(`[1/2] Nodge CLI not found — installing from ${installerUrl}`);
+  console.log('      (~30s. This session must be RESTARTED afterwards — see the notice at the end.)');
 
   let script;
   try {
@@ -78,6 +79,17 @@ async function installCli(domain) {
   }
 }
 
+// The hooks load credentials when the session starts, so a session that was
+// already running when connect finished keeps using the old (absent) state.
+// Printed as the LAST line on success - it is the difference between "it
+// worked" and "it looks broken", and users read the tail of the output.
+function printRestartNotice() {
+  console.log('');
+  console.log('  /!\\  RESTART THIS AGENT SESSION to pick up the connection.');
+  console.log('       Nodge tools and commit-context hooks stay unavailable until you do.');
+  console.log('');
+}
+
 function printManualFallback(domain, isWin) {
   console.error('You can install the Nodge CLI manually, then re-run /nodge-connect:');
   console.error(isWin
@@ -108,6 +120,7 @@ async function main() {
     console.error(`Could not run the Nodge CLI (${child.error.message}). Run /nodge-doctor.`);
     process.exit(1);
   }
+  if (child.status === 0) printRestartNotice();
   process.exit(child.status ?? 1);
 }
 
